@@ -5,7 +5,7 @@
 <img src="https://img.shields.io/badge/FastAPI-0.89.1-red" alt="FastAPI - FastAPI">
 <img src="https://img.shields.io/badge/gunicorn-20.1.0-green" alt="gunicorn - gunicorn">
 <img src="https://img.shields.io/badge/Ultralytics-Yolov8-blue" alt="Ultralytics - Yolov8">
-[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com)
+[![Generic badge](https://img.shields.io/badge/FALCONS.AI-Computer_Vision-red.svg)](https://shields.io/)
 
 </div>
 <!-- PROJECT LOGO -->
