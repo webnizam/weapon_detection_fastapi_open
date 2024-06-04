@@ -1,0 +1,1 @@
+2023-10-29 16:43:54.763 | INFO     | main:img_object_detection_to_json:128 - results: {'detect_objects': [{'name': 'weapons', 'confidence': 0.8264001012}], 'detect_objects_names': 'weapons'}
