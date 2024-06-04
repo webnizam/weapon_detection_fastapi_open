@@ -21,6 +21,7 @@
 
 This repository contains a YOLOv8-based model that has been fine-tuned for weapon detection. The model is served using FastAPI, a modern Python web framework, making it easy to deploy and use for real-time weapon detection applications.
 
+
 ## Introduction
 
 The YOLOv8 (You Only Look Once) model is a popular real-time object detection algorithm, and it has been fine-tuned to detect weapons in images and videos. This repository provides a pre-trained model that is ready for use via a FastAPI-based web service.
