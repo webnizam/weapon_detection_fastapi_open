@@ -93,9 +93,6 @@ The FastAPI server exposes the following endpoints:
 
 You can access the interactive API documentation at `http://localhost:8000/docs`.
 
-## Model Fine-Tuning
-
-If you want to fine-tune the model further or train it on a custom dataset, you can follow the YOLOv8 fine-tuning guidelines and adapt the code accordingly. You will need to modify the YOLOv8 configuration and data loading scripts to fit your specific needs.
 
 ## License
 
