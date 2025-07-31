@@ -2,15 +2,43 @@ from PIL import Image
 import io
 import pandas as pd
 import numpy as np
-
-from typing import Optional
+import torch
 
 from ultralytics import YOLO
-from ultralytics.yolo.utils.plotting import Annotator, colors
+from ultralytics.yolo.utils.plotting import Annotator
 
 
-# Initialize the models
-loaded_model = YOLO("./models/11_02_23_10_01.pt")
+# Initialize the models with proper PyTorch loading configuration
+def load_yolo_model(model_path: str):
+    """
+    Load YOLO model with proper handling for PyTorch 2.6+ weights_only behavior
+    """
+    # Store original torch.load function
+    original_torch_load = torch.load
+    
+    try:
+        # Temporarily patch torch.load to use weights_only=False
+        def patched_torch_load(f, map_location=None, pickle_module=None, **pickle_load_args):
+            # Remove weights_only if it's in pickle_load_args to avoid conflicts
+            pickle_load_args.pop('weights_only', None)
+            return original_torch_load(f, map_location=map_location, pickle_module=pickle_module, weights_only=False, **pickle_load_args)
+        
+        # Apply the patch
+        torch.load = patched_torch_load
+        
+        # Load the model
+        model = YOLO(model_path)
+        
+        return model
+        
+    except Exception as e:
+        print(f"Failed to load YOLO model: {e}")
+        raise e
+    finally:
+        # Always restore the original torch.load function
+        torch.load = original_torch_load
+
+loaded_model = load_yolo_model("./models/11_02_23_10_01.pt")
 
 
 def get_image_from_bytes(binary_image: bytes) -> Image:
@@ -97,7 +125,7 @@ def get_model_predict(model: YOLO, input_image: Image, save: bool = False, image
 ################################# BBOX Func #####################################
 
 
-def add_bboxs_on_img(image: Image, predict: pd.DataFrame()) -> Image:
+def add_bboxs_on_img(image: Image, predict: pd.DataFrame) -> Image:
     """
     add a bounding box on the image
 

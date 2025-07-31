@@ -67,7 +67,7 @@ async def redirect():
 
 ######################### Support Func #################################
 
-def crop_image_by_predict(image: Image, predict: pd.DataFrame(), crop_class_name: str,) -> Image:
+def crop_image_by_predict(image: Image, predict: pd.DataFrame, crop_class_name: str,) -> Image:
     """Crop an image based on the detection of a certain object in the image.
     
     Args:
